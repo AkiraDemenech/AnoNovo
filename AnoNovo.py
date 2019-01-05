@@ -4,6 +4,8 @@ The two functions named in Portuguese isn't mine, they can't be just yours too, 
 from time import localtime as agora, sleep as esperar, struct_time as momento
 
 anoNovo = [31, 12]	# (Dia, Mês) da Virada
+virada = "Ano Novo"	# Resposta para a data
+interrupt = "Ano Velho"
 
 def bissextile (ano=agora().tm_year):
 	"""bissextile([year]) -> bool
@@ -24,14 +26,14 @@ def newYear ():
 		
 		if (agora().tm_mon==1 and agora().tm_mday==1
 			and agora().tm_hour==0 and agora().tm_min==0):
-			a = 'FELIZ ANO NOVO !!!'
+			a = ('FELIZ ' + virada + ' !!!').upper()
 			print(a + (" ", '!')[bissextile()], end = "\t\a")
 			return a
 
 		try:
 			esperar (1)
 		except KeyboardInterrupt: #comentários inseridos em linhas estratégicas explicando o que é óbvio
-			return 'ADEUS ANO VELHO !!' + ("!", '\a')[bissextile()]
+			return ('ADEUS ' + interrupt + ' !!' + ("!", '\a')[bissextile()]).upper()
 
 
 if __name__ == "__main__":
